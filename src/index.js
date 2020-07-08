@@ -1,17 +1,72 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+// const Bubbles = () => {
+//   let classes
+//   const makeBubbles = () => {
+//     return classes = 'ball';
+//   }
+//   const handleClick = () => {
+//     console.log("I am clicked")
+//   }
+//   return (
+//   )
+// }
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+// class Bubbles extends React.Component {
+//   state = {this.props.classes}
+
+//   render() {
+//     return (
+//       classes = makeBubbles;
+//     <div>
+//       <div className={classes} onClick={handleClick} >
+//         <div>Come and bubble!!</div>
+//       <div className="ball-1"></div>
+//       <div className="ball-2"></div>
+//       <div className="ball-3"></div>
+//       <div className="ball-4"></div>
+//    </div>
+//     </div>
+
+//     )
+//   }
+// }
+class Bubbles extends React.Component {
+  state = {
+    showBubbles: false,
+    name: "",
+  };
+
+  name = "Victor";
+
+  handleShowBubbles = () => {
+    this.setState((prevState) => ({
+      showBubbles: !prevState.showBubbles,
+    }));
+  };
+
+  render() {
+    const { showBubbles } = this.state;
+    return (
+      <>
+        <button onClick={this.handleShowBubbles}>
+          {showBubbles
+            ? "Burst bubbles"
+            : "Lets See some bubbles"}
+        </button>
+        {showBubbles && (
+          <div className="ball">
+              <div className="ball-1"></div>
+              <div className="ball-2"></div>
+              <div className="ball-3"></div>
+              <div className="ball-4"></div>
+            </div>
+        )}
+      </>
+    );
+  }
+}
+
+ReactDOM.render(<Bubbles />, document.querySelector("#root"));
